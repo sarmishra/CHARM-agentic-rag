@@ -1,0 +1,36 @@
+# charm/configs/default.yaml
+# Default CHARM configuration — matches paper Section 6.1
+
+backbone_llm: gpt-4o
+llm_temperature: 0.0
+retriever: faiss
+embedding_model: text-embedding-3-small
+
+charm:
+  sfv:
+    model: cross-encoder/nli-deberta-v3-base
+    threshold: 0.72            # τ — calibrated on held-out validation splits
+  csct:
+    model: all-mpnet-base-v2
+    drift_threshold: 0.18      # δ_drift
+  cpm:
+    calibration: temperature_scaling
+    temperature: 1.4           # T — calibrated on 500 held-out trajectories
+    fallback: nli_entailment_proxy
+    calibration_samples: 500
+  crt:
+    threshold: 0.55            # θ — grid search over [0.40, 0.45, ..., 0.65]
+    weights:
+      sfv: 0.4
+      csct: 0.4
+      cpm: 0.2                 # Lower weight reflects CPM's calibration limits
+
+mitigation:
+  default: CRR                 # M1: Cascade Re-Retrieval
+  high_confidence_cascade: HITL  # Route to human review when confident hallucination
+
+evaluation:
+  n_runs: 5                    # Runs for LO/s standard deviation
+  cascade_window: 1            # TP if detected within 1 stage of injection
+  error_magnitude_min: 0.15    # δ threshold for P(ε_i+1 | ε_i)
+  dag_threshold: 0.55          # θ for cascade path identification
