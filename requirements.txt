@@ -1,0 +1,34 @@
+# Core LLM and RAG
+openai>=1.30.0
+langchain>=0.2.0
+langchain-openai>=0.1.0
+langchain-community>=0.2.0
+faiss-cpu>=1.8.0
+tiktoken>=0.7.0
+
+# NLI and Embeddings (CHARM components)
+sentence-transformers>=3.0.0    # CSCT: all-mpnet-base-v2
+transformers>=4.40.0            # SFV: cross-encoder/nli-deberta-v3-base
+torch>=2.2.0
+
+# Scientific computing
+numpy>=1.26.0
+scipy>=1.13.0
+
+# Evaluation and data
+datasets>=2.19.0
+jsonlines>=4.0.0
+pandas>=2.2.0
+tqdm>=4.66.0
+scikit-learn>=1.4.0
+
+# Configuration
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Logging and experiment tracking
+wandb>=0.17.0
+
+# Development and testing
+pytest>=8.0.0
+black>=24.0.0
