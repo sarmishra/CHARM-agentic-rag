@@ -33,56 +33,6 @@ CHARM is a modular, retrofit-friendly framework that detects and interrupts thes
 | Parallel Verification Agent | PVA | Independent parallel verification agent | High |
 | Pipeline Rollback and Re-Execution | PRR | Rollback to last clean stage | Highest |
 
----
-
-## Repository Structure
-
-```
-CHARM/
-├── charm/                          # Core CHARM framework
-│   ├── __init__.py
-│   ├── framework.py                # Main CHARMFramework class
-│   ├── sfv.py                      # Stage-Level Fact Verifier
-│   ├── csct.py                     # Cross-Stage Consistency Tracker
-│   ├── cpm.py                      # Confidence Propagation Monitor
-│   └── crt.py                      # Cascade Resolution Trigger
-│
-├── mitigation/                     # Mitigation patterns
-│   ├── __init__.py
-│   ├── crr.py                      # M1: Cascade Re-Retrieval
-│   ├── sct.py                      # M2: Staged Confidence Thresholding
-│   ├── pva.py                      # M3: Parallel Verification Agent
-│   └── prr.py                      # M4: Pipeline Rollback and Re-Execution
-│
-├── evaluation/                     # Evaluation harness
-│   ├── __init__.py
-│   ├── agentic_wrapper.py          # Agentic trajectory wrapper
-│   ├── inject_cascades.py          # Four-method cascade injection protocol
-│   ├── metrics.py                  # CDR, FPR, EPR, MSR, CDD, LO/s
-│   └── run_evaluation.py           # Main evaluation script
-│
-├── data/
-│   ├── adversarial/                # 200 annotated adversarial trajectories
-│   │   ├── retrieval_cascades.jsonl
-│   │   ├── inference_cascades.jsonl
-│   │   ├── context_poisoning_cascades.jsonl
-│   │   └── confidence_inflation_cascades.jsonl
-│   └── README.md
-│
-├── configs/
-│   ├── default.yaml                # Default CHARM configuration
-│   ├── high_throughput.yaml        # Optimized for low latency (M2 only)
-│   └── enterprise.yaml             # Maximum reliability (M3 + M4)
-│
-├── scripts/
-│   ├── run_ablation.sh             # Reproduce ablation study (Table 5)
-│   ├── run_baselines.sh            # Run all baseline comparisons
-│   └── run_full_eval.sh            # Full evaluation across all datasets
-│
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
 
 ---
 
@@ -137,9 +87,11 @@ print(f"Mitigation applied: {result.mitigation_applied}")
 
 ```bash
 # Reproduce main results (Table 3 in the paper)
+# Note: EVER and IRCoT are discussed qualitatively in the paper
+# (Section 8.3) as they report EM/F1 rather than cascade-specific metrics
 python evaluation/run_evaluation.py \
     --datasets hotpotqa musique 2wikimultihopqa adversarial \
-    --baselines none selfcheckgpt ragas self_correction ever ircot \
+    --baselines none selfcheckgpt ragas self_correction \
     --model gpt-4o \
     --output_dir results/
 
