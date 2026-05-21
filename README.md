@@ -60,12 +60,14 @@ from charm import CHARMFramework
 
 # Initialize CHARM with default configuration
 charm = CHARMFramework(
-    sfv_threshold=0.72,       # NLI entailment threshold
-    csct_drift_threshold=0.18, # Cosine similarity drift threshold
-    cpm_temperature=1.4,       # Confidence calibration temperature
-    crt_threshold=0.55,        # Cascade trigger threshold
-    crt_weights=(0.4, 0.4, 0.2)  # SFV, CSCT, CPM weights
-)
+sfv:
+  model: cross-encoder/nli-deberta-v3-base
+  threshold: 0.72
+  dual_anchor: true          # Add this
+  top_k_consensus: 3         # k=3 retrieved candidates for consensus anchor
+  long_context_strategy: sliding_window   # Add this
+  max_tokens: 512
+  stride: 256
 
 # Wrap your existing pipeline execution
 pipeline_stages = ["query_formulation", "retrieval", "reasoning",
