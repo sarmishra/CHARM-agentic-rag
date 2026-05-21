@@ -13,11 +13,13 @@ charm:
   csct:
     model: all-mpnet-base-v2
     drift_threshold: 0.18      # δ_drift
-  cpm:
-    calibration: temperature_scaling
-    temperature: 1.4           # T — calibrated on 500 held-out trajectories
-    fallback: nli_entailment_proxy
-    calibration_samples: 500
+cpm:
+  calibration: temperature_scaling
+  temperature: 1.4
+  fallback: nli_contradiction_proxy    # Changed from nli_entailment_proxy
+  fallback_threshold: 0.35             # τ_cpm = 0.35 as specified in paper
+  calibration_samples: 500
+  inflation_delta: 0.15                # Δ = 0.15 from Bayesian update
   crt:
     threshold: 0.55            # θ — grid search over [0.40, 0.45, ..., 0.65]
     weights:
