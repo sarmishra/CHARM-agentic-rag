@@ -89,8 +89,8 @@ CHARM/
 ## Installation
 
 ```bash
-git clone https://github.com/[your-username]/CHARM.git
-cd CHARM
+git clone https://github.com/sarmishra/CHARM-agentic-rag.git
+cd CHARM-agentic-rag
 pip install -r requirements.txt
 ```
 
