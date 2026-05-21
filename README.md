@@ -104,6 +104,13 @@ bash scripts/run_ablation.sh
 bash scripts/run_baselines.sh
 ```
 
+### Long-Context Handling
+- **SFV**: 512-token max per DeBERTa-v3 limit; sliding window 
+  (stride=256) for longer outputs; minimum entailment across windows
+- **CSCT**: Full output up to 512 tokens; chunked mean-pooling beyond
+- Median stage output lengths in evaluation: HotpotQA 187 tokens, 
+  MuSiQue 312 tokens, 2WikiMultiHopQA 278 tokens
+  
 ---
 
 ## Configuration
@@ -224,6 +231,15 @@ trajectories used in the paper, with the following fields:
 }
 ```
 
+### FPR Evaluation Splits
+FPR is measured on clean, non-injected trajectories strictly 
+disjoint from injected sets:
+- HotpotQA: 200 clean trajectories
+- MuSiQue: 150 clean trajectories  
+- 2WikiMultiHopQA: 150 clean trajectories
+- Custom Adversarial: 100 clean trajectories
+- **Total: 500 clean trajectories**
+  
 ---
 
 ## Citation
