@@ -1,8 +1,8 @@
 # CHARM: Cascading Hallucination Aware Resolution and Mitigation
 
 **Official implementation for the paper:**
-> *Cascading Hallucination in Agentic RAG Pipelines: The CHARM Framework for Detection and Mitigation in Multi-Step Reasoning Systems*
-> Saroj Mishra — [Venue, Year]
+> *Cascading Hallucination in Agentic RAG: The CHARM Framework for Detection and Mitigation*
+> Saroj Mishra
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://python.org)
@@ -63,9 +63,9 @@ charm = CHARMFramework(
 sfv:
   model: cross-encoder/nli-deberta-v3-base
   threshold: 0.72
-  dual_anchor: true          # Add this
+  dual_anchor: true          
   top_k_consensus: 3         # k=3 retrieved candidates for consensus anchor
-  long_context_strategy: sliding_window   # Add this
+  long_context_strategy: sliding_window
   max_tokens: 512
   stride: 256
 
@@ -247,12 +247,12 @@ disjoint from injected sets:
 If you use CHARM in your research, please cite:
 
 ```bibtex
-@article{mishra2025charm,
-  title   = {Cascading Hallucination in Agentic {RAG} Pipelines: The {CHARM} 
-             Framework for Detection and Mitigation in Multi-Step Reasoning Systems},
+@article{mishra2026charm,
   author  = {Mishra, Saroj},
-  journal = {[Venue]},
-  year    = {2025}
+  title   = {Cascading Hallucination in Agentic RAG:
+             The CHARM Framework for Detection and Mitigation},
+  journal = {arXiv preprint arXiv:2606.04435},
+  year    = {2026}
 }
 ```
 
