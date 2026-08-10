@@ -1,4 +1,4 @@
-# CHARM: Cascading Hallucination Aware Resolution and Mitigation
+# Cascading Hallucination in Agentic RAG: The CHARM Framework for Detection and Mitigation
 
 **Official implementation for the paper:**
 > *Cascading Hallucination in Agentic RAG: The CHARM Framework for Detection and Mitigation*
