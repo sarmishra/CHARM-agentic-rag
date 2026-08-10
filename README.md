@@ -2,7 +2,6 @@
 
 **Official implementation for the paper:**
 > *Cascading Hallucination in Agentic RAG: The CHARM Framework for Detection and Mitigation*
-> Saroj Mishra
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://python.org)
